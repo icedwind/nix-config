@@ -7,7 +7,16 @@
   config,
   pkgs,
   ...
-}: {
+}:
+let
+  #flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
+  my-python-packages = ps: with ps; [
+    material-color-utilities
+    numpy
+    i3ipc
+  ];
+in
+{
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -24,10 +33,29 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  nixpkgs = {
+    overlays = [
+      outputs.overlays.modifications
+      outputs.overlays.additions
+      inputs.nixpkgs-f2k.overlays.stdenvs
+      inputs.nixpkgs-f2k.overlays.compositors
+      inputs.nur.overlay
+      (final: prev:
+        {
+          awesome = inputs.nixpkgs-f2k.packages.${pkgs.system}.awesome-git;
+        })
+    ];
+    config = {
+      allowUnfreePredicate = _: true;
+      allowUnfree = true;
+    };
+  };
+
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  /*environment.systemPackages = with pkgs; [
      vim
      wget
      inputs.zen-browser.packages."${system}".generic
@@ -60,6 +88,116 @@
 
      python3
      nodejs
+
+     ags
+  ];*/
+
+  environment.systemPackages = with pkgs; [
+    ags
+    android-tools
+    appimage-run
+    btop
+    bluez
+    bluez-tools
+    brillo
+    brightnessctl
+    dmenu
+    direnv
+    element-desktop
+    eww
+    fastfetch
+    fuse
+    git
+    godot_4-mono
+    gtk3
+    home-manager
+    htop
+    imv
+    #imgclr
+    inotify-tools
+    inputs.zen-browser.packages."${system}".generic
+    jq
+    libnotify
+    lm_sensors
+    lua-language-server
+    lutgen
+    maim
+    mpv
+    networkmanager_dmenu
+    neofetch
+    niv
+    ntfs3g
+    #osu-lazer
+    pamixer
+    pfetch
+    pstree
+    python3
+    (pkgs.python311.withPackages my-python-packages)
+    ripgrep
+    #rnix-lsp
+    st
+    steam-run
+    spotify
+    slop
+    simplescreenrecorder
+    spotdl
+    swaybg
+    swaylock-effects
+    udiskie
+    unzip
+    vesktop
+    vim
+    wget
+    wirelesstools
+    wmctrl
+    xclip
+    xdg-utils
+    xorg.xorgserver
+    xorg.xf86inputevdev
+    xorg.xf86inputlibinput
+    xorg.xf86inputsynaptics
+    xorg.xf86videoati
+    xorg.xwininfo
+    xdotool
+    nix-ld
+    nix-prefetch-git
+
+    #awesome
+  ];
+
+  /*services = {
+    gvfs.enable = true;
+    power-profiles-daemon.enable = false;
+    tlp.enable = true;
+    upower.enable = true;
+    xserver = {
+      enable = true;
+      videoDrivers = [ "amdgpu" ];
+      windowManager.awesome = {
+        enable = true;
+      };
+      desktopManager.gnome.enable = false;
+    };
+
+    libinput = {
+        enable = true;
+        touchpad = {
+          tapping = true;
+          middleEmulation = true;
+          naturalScrolling = true;
+        };
+    };
+    displayManager = {
+      defaultSession = "none+awesome";
+      startx.enable = true;
+      sddm.enable = true;
+    };
+  }*/
+  
+  services.xserver.windowManager.awesome.enable = true;
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-sdk-6.0.428"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

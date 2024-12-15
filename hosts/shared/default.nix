@@ -48,6 +48,8 @@
   #programs.zsh.enable = true;
   programs.fish.enable = true;
 
+  programs.hyprland.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -149,5 +151,11 @@
     };
 
     enableDefaultPackages = true;
+  };
+
+
+  console = {
+    font = "Lat2-Terminus16";
+    useXkbConfig = true;
   };
 }

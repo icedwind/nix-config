@@ -5,6 +5,10 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nur.url = "github:nix-community/NUR";
+    nixpkgs-f2k.url = "github:moni-dz/nixpkgs-f2k";
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -16,6 +20,15 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    darkmatter.url = "gitlab:VandalByte/darkmatter-grub-theme";
+
+    matugen = {
+      url = "github:/InioX/Matugen";
+    };
+
   };
 
   outputs = {
