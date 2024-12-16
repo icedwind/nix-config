@@ -72,7 +72,7 @@ _:
       "inversePrimary" : hexFromArgb(colorscheme.get_inversePrimary()),
   }
 
-  os.popen('sed -i "/colors = import*/c\\  colors = import ../shared/cols/material.nix { };" /etc/nixos/home/namish/home.nix')
+  os.popen('sed -i "/colors = import*/c\\  colors = import ../shared/cols/material.nix { };" /home/icedwind/Documents/nix-config/home/icedwind/home.nix')
   with open('/etc/nixos/home/shared/cols/material.nix', 'w') as file:
       text=f"""{{}}:
       rec {{

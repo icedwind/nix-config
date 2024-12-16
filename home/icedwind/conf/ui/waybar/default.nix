@@ -26,12 +26,12 @@
         #workspaces button {
           font-size: 18px;
           background-color: transparent;
-          color: #${color5};
+          color: #${color7}; /*5*/
           transition: all 0.1s ease;
         }
         #workspaces button.focused {
           font-size: 18px;
-          color: #${color3};
+          color: #${color5}; /*3*/
         }
         #workspaces button.persistent {
           color: #${color1};
@@ -95,17 +95,17 @@
         modules-center = [ "clock" ];
         modules-left = [ "custom/launcher" "hyprland/workspaces" ];
         modules-right = [
+          "tray"
           "network"
           "battery"
           "custom/power"
-          "tray"
         ];
         "hyprland/workspaces" = {
           on-click = "activate";
           all-outputs = true;
-          format = "{icon}";
+          format = "{id}";
           disable-scroll = true;
-          active-only = false;
+          #active-only = false;
           format-icons = {
             default = "󰊠 ";
             persistent = "󰊠 ";
@@ -146,7 +146,7 @@
           format-wifi = "󰤨 ";
         };
         "custom/launcher" = {
-          on-click = "eww open --toggle dash";
+          on-click = "rofi -show drun"; #"eww open --toggle dash";
           format = " ";
         };
         "custom/power" = {

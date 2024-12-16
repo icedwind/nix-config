@@ -2,7 +2,7 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, lib, config, pkgs, ...}:
 let
-  colors = import ../shared/cols/vixima.nix { };
+  colors = import ../shared/cols/stardewnight.nix { };
   walltype = "image";
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
@@ -33,6 +33,14 @@ in
 
     # utils
     (import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
+    (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
+    #(import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
+
+    (import ./conf/utils/thunar/default.nix { inherit pkgs; })
+
+    # hypr stuff
+    (import ./conf/hypr/hyprlock/default.nix { inherit config lib colors; })
+    (import ./conf/hypr/hypridle/default.nix { inherit pkgs; })
 
     # Some file generation
     (import ./misc/vencord.nix { inherit config colors; })
@@ -150,6 +158,11 @@ in
       pywal
       slurp
       sassc
+
+      lua52Packages.lua-pam
+
+      bibata-cursors
+      hyprcursor
     ];
   };
 
@@ -157,6 +170,10 @@ in
     source = ../images/walls;
     recursive = true;
   };
+
+  home.sessionPath = [
+    "/home/icedwind/.local/bin"
+  ];
 
   programs.bun.enable = true;
   services.udiskie.enable = true;

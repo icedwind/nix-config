@@ -30,15 +30,15 @@ in
         sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
       }
       general {
-        gaps_in = 20
-        gaps_out = 20
+        gaps_in = 15
+        gaps_out = 15
         border_size = 0
         col.active_border = rgb(${accent})
         col.inactive_border = rgba(595959aa)
         layout = dwindle # master|dwindle 
       }
       dwindle {
-        no_gaps_when_only = false
+        #no_gaps_when_only = false
         force_split = 0 
         special_scale_factor = 0.8
         split_width_multiplier = 1.0 
@@ -47,28 +47,28 @@ in
         preserve_split = yes 
       }
       master {
-        new_is_master = true
+        #new_is_master = true
         special_scale_factor = 0.8
-        new_is_master = true
-        no_gaps_when_only = false
+        #new_is_master = true
+        #no_gaps_when_only = false
       }
       # cursor_inactive_timeout = 0
       decoration {
         active_opacity = 1
         inactive_opacity = 1
         fullscreen_opacity = 1.0
-        rounding = 3
-        drop_shadow = true
-        shadow_range = 4
-        shadow_render_power = 3
-        shadow_ignore_window = true
+        rounding = 10
+        #drop_shadow = true
+        #shadow_range = 4
+        #shadow_render_power = 3
+        #shadow_ignore_window = true
       # col.shadow = 
       # col.shadow_inactive
       # shadow_offset
         dim_inactive = false
       # dim_strength = #0.0 ~ 1.0
         blur {
-          enabled: false
+          enabled = true
           size = 20
           passes = 4
           new_optimizations = true
@@ -123,13 +123,15 @@ in
         swallow_regex =
         focus_on_activate = true
       }
-      device:epic mouse V1 {
-        sensitivity = -0.5
-      }
+
+      #device:epic mouse V1 {
+      #  sensitivity = -0.5
+      #}
+
       bind = $mainMod, Return, exec, kitty
-      bind = $mainMod, Q,exec,screenshotmenu
+      bind = $mainMod SHIFT, C,exec,screenshotmenu
       bind = $mainMod SHIFT, Return, exec, wezterm
-      bind = $mainMod SHIFT, C, killactive,
+      bind = $mainMod, Q, killactive,
       bind = $mainMod SHIFT, Q, exit,
       bind = $mainMod SHIFT, Space, togglefloating,
       bind = $mainMod,F,fullscreen
@@ -166,7 +168,7 @@ in
       bind = $mainMod, 8, workspace, 8
       bind = $mainMod, 9, workspace, 9
       bind = $mainMod, 0, workspace, 10
-      bind = $mainMod, L, workspace, +1
+      bind = $mainMod, L, exec, hyprlock #workspace, +1
       bind = $mainMod, H, workspace, -1
       bind = $mainMod, period, workspace, e+1
       bind = $mainMod, comma, workspace,e-1
@@ -274,8 +276,10 @@ in
       exec = swww img ${wall}
       exec = dunst &
       exec-once = xss-lock lock &
-      exec =  eww open bar && eww reload &
+      exec-once = waybar #eww open bar && eww reload &
       exec = xrdb -merge ~/.Xresources &
+
+      exec = hyprctl setcursor Bibata-Modern-Classic 24
 
       #---------------#
       # windows rules #

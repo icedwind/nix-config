@@ -35,11 +35,11 @@ in
 
   nixpkgs = {
     overlays = [
-      outputs.overlays.modifications
-      outputs.overlays.additions
+      #outputs.overlays.modifications
+      #outputs.overlays.additions
       inputs.nixpkgs-f2k.overlays.stdenvs
       inputs.nixpkgs-f2k.overlays.compositors
-      inputs.nur.overlay
+      inputs.nur.overlays.default
       (final: prev:
         {
           awesome = inputs.nixpkgs-f2k.packages.${pkgs.system}.awesome-git;
@@ -50,6 +50,8 @@ in
       allowUnfree = true;
     };
   };
+
+  programs.kdeconnect.enable = true;
 
 
 
