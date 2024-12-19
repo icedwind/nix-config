@@ -14,6 +14,9 @@ let
     material-color-utilities
     numpy
     i3ipc
+    jinja2
+    materialyoucolor
+    pillow
   ];
 in
 {

@@ -29,6 +29,7 @@
       url = "github:/InioX/Matugen";
     };
 
+    ignis.url = "github:linkfrg/ignis";
   };
 
   outputs = {

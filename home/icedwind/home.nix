@@ -2,7 +2,7 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, lib, config, pkgs, ...}:
 let
-  colors = import ../shared/cols/stardewnight.nix { };
+  colors = import ../shared/cols/kizu.nix { };
   walltype = "image";
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
@@ -57,6 +57,11 @@ in
 
     # Bin files
     (import ../shared/bin/default.nix { inherit config colors walltype; })
+
+    (import ./misc/fastfetch.nix { inherit config; })
+    (import ./misc/ignis.nix { inherit config colors; })
+
+    (import ./conf/editors/vscodium/default.nix { inherit pkgs colors; })
   ];
 
   nixpkgs = {
@@ -163,6 +168,12 @@ in
 
       bibata-cursors
       hyprcursor
+
+      wdisplays
+
+      inputs.ignis.packages.${system}.ignis
+
+      nitch
     ];
   };
 

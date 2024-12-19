@@ -102,10 +102,12 @@
         ];
         "hyprland/workspaces" = {
           on-click = "activate";
+
           all-outputs = true;
+          active-only = false;
+
           format = "{id}";
           disable-scroll = true;
-          #active-only = false;
           format-icons = {
             default = "󰊠 ";
             persistent = "󰊠 ";
