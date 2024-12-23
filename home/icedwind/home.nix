@@ -32,7 +32,7 @@ in
     (import ./conf/ui/waybar/default.nix { inherit config pkgs lib hyprland colors inputs; })
 
     # utils
-    (import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
+    #(import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
     #(import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
 
