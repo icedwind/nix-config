@@ -31,7 +31,7 @@
         }
         #workspaces button.focused {
           font-size: 18px;
-          color: #${color5}; /*3*/
+          color: #${accent}; /*3*/
         }
         #workspaces button.persistent {
           color: #${color1};

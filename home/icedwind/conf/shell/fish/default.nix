@@ -6,7 +6,7 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
-    plugins = [
+    /*plugins = [
       # Enable a plugin (here grc for colorized command output) from nixpkgs
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
       # Manually packaging and enable a plugin
@@ -19,7 +19,7 @@
           sha256 = "0dbnir6jbwjpjalz14snzd3cgdysgcs3raznsijd6savad3qhijc";
         };
       }
-    ];
+    ];*/
   };
 
   programs.starship = {

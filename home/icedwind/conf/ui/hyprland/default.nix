@@ -138,6 +138,12 @@ in
       bind = $mainMod,Y,pin
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
+
+      # Media binds
+      bind = ,XF86AudioRaiseVolume, exec, pamixer -i 5 && ignis open ignis_OSD
+      bind = ,XF86AudioLowerVolume, exec, pamixer -d 5 && ignis open ignis_OSD
+      bind = ,XF86AudioMute, exec, pamixer -t && ignis open ignis_OSD
+
       #-----------------------#
       # Toggle grouped layout #
       #-----------------------#
@@ -274,9 +280,9 @@ in
       exec = bash -c ~/.local/bin/genmenupic
       exec-once = swww init &
       exec = swww img ${wall}
-      exec = dunst &
+      #exec = dunst &
       exec-once = xss-lock lock &
-      exec-once = waybar #eww open bar && eww reload &
+      exec-once = ignis init #waybar #eww open bar && eww reload &
       exec = xrdb -merge ~/.Xresources &
 
       exec = hyprctl setcursor Bibata-Modern-Classic 24

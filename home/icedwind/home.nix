@@ -62,6 +62,8 @@ in
     (import ./misc/ignis.nix { inherit config colors; })
 
     (import ./conf/editors/vscodium/default.nix { inherit pkgs colors; })
+
+    (import ../shared/xresources.nix { inherit colors; })
   ];
 
   nixpkgs = {
@@ -174,12 +176,22 @@ in
       inputs.ignis.packages.${system}.ignis
 
       nitch
+
+      hyprshot
+
+      glib
     ];
   };
 
-  home.file.".wallpapers" = {
-    source = ../images/walls;
-    recursive = true;
+  home.file = {
+    ".wallpapers" = {
+      source = ../images/walls;
+      recursive = true;
+    };
+
+    "shells" = {
+      source = ../shared/shells;
+    };
   };
 
   home.sessionPath = [

@@ -16,7 +16,7 @@
   xdg.configFile."rofi/config.rasi".text = ''
     configuration {
     	modi:                       "drun";
-      show-icons:                 true;
+        show-icons:                 true;
     	drun-display-format:        "{name}";
     }
     @theme "/dev/null"
@@ -32,12 +32,12 @@
 
     window {
     transparency:                "real";
-    location:   north west;
-    anchor:   north west;
+    location:       center;
+    anchor:         center;
     fullscreen:                  false;
     width:                       360px;
-    x-offset:                    290px;
-    y-offset:                    20px;
+    x-offset:                    0px;
+    y-offset:                    0px;
 
     enabled:                     true;
     border-radius:               15px;
