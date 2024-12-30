@@ -1,23 +1,24 @@
-{ pkgs, colors, ... }:
+{ pkgs, colors, inputs, ... }:
 
 with colors; {
   programs.wezterm = {
     enable = true;
+    package = inputs.wezterm.packages.${pkgs.system}.default;
     colorSchemes = import ./colors.nix {
       inherit colors;
     };
     extraConfig = ''
       local wez = require('wezterm')
       return {
-        default_prog     = { 'zsh' },
+        default_prog     = { 'fish' },
         cell_width = 0.85,
 
-        --front_end        = "OpenGL",
-        --enable_wayland   = true,
+        front_end        = "OpenGL",
+        enable_wayland   = true,
 
-        enable_wayland = false,
-        front_end = "WebGpu",
-        webgpu_power_preference = "HighPerformance",
+        --enable_wayland = false,
+        --front_end = "WebGpu",
+        --webgpu_power_preference = "HighPerformance",
 
         scrollback_lines = 1024,
         font         = wez.font_with_fallback({

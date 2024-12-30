@@ -128,7 +128,7 @@ in
       #  sensitivity = -0.5
       #}
 
-      bind = $mainMod, Return, exec, kitty
+      bind = $mainMod, Return, exec, wezterm
       bind = $mainMod SHIFT, C,exec,screenshotmenu
       bind = $mainMod SHIFT, Return, exec, wezterm
       bind = $mainMod, Q, killactive,

@@ -4,7 +4,7 @@ let
 in
 
 {
-  imports = [ inputs.spicetify-nix.homeManagerModule ];
+  imports = [ inputs.spicetify-nix.homeManagerModules ];
   programs.spicetify =
     let
       # use a different version of spicetify-themes than the one provided by

@@ -167,8 +167,18 @@ in
     nix-ld
     nix-prefetch-git
 
-    #awesome
+    distrobox
+
+    qemu
+
+    xorg.xinit
+    dwm
   ];
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   /*services = {
     gvfs.enable = true;
@@ -201,6 +211,33 @@ in
   
   services.xserver.windowManager.awesome.enable = true;
 
+  /*services.xserver.windowManager.dwm = {
+        enable = true;
+        package = pkgs.dwm.override {
+          conf = ../../patches/dwm/config.def.h;
+          patches = [
+            # IN THE NAME OF THY GOD,
+            # DO NOT CHANGE THE ORDER OF THESE PATCHES
+            # OR SHIT WILL BREAK
+            ../../patches/dwm/alt-tags.diff
+            ../../patches/dwm/awm.diff
+            ../../patches/dwm/fullscreen.diff
+            ../../patches/dwm/systray.diff
+            ../../patches/dwm/scratches.diff
+            ../../patches/dwm/alttab.diff
+            ../../patches/dwm/restartsig.diff
+            ../../patches/dwm/restore.diff
+            ../../patches/dwm/autostart.diff
+            ../../patches/dwm/center.diff
+            ../../patches/dwm/statuspadding.diff
+            ../../patches/dwm/swallow.diff
+            ../../patches/dwm/xresources.diff
+            ../../patches/dwm/urgentbor.diff
+            ../../patches/dwm/fullgaps.diff
+          ];
+      };
+  };*/
+
   nixpkgs.config.permittedInsecurePackages = [
     "dotnet-sdk-6.0.428"
   ];
@@ -216,7 +253,7 @@ in
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

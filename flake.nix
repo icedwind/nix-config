@@ -30,6 +30,8 @@
     };
 
     ignis.url = "github:linkfrg/ignis";
+
+    wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
   outputs = {

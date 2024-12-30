@@ -2,7 +2,7 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, lib, config, pkgs, ...}:
 let
-  colors = import ../shared/cols/kizu.nix { };
+  colors = import ../shared/cols/forest.nix { };
   walltype = "image";
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
@@ -50,7 +50,7 @@ in
     (import ./misc/obsidian.nix { inherit colors; })
 
     # Music thingies
-    #(import ./conf/music/spicetify/default.nix { inherit colors inputs pkgs; })
+    (import ./conf/music/spicetify/default.nix { inherit colors inputs pkgs; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/hypr.nix { inherit config pkgs; })
     (import ./conf/music/cava/default.nix { inherit colors; })
@@ -180,6 +180,8 @@ in
       hyprshot
 
       glib
+
+      gparted
     ];
   };
 
