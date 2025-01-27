@@ -19,7 +19,7 @@ in
         kb_layout = us
         kb_variant =
         kb_model =
-        kb_options = caps:escape
+        #kb_options = caps:escape
         kb_rules =
         follow_mouse = 1 # 0|1|2|3
         float_switch_override_focus = 2
@@ -129,7 +129,7 @@ in
       #}
 
       bind = $mainMod, Return, exec, wezterm
-      bind = $mainMod SHIFT, C,exec,screenshotmenu
+      bind = $mainMod SHIFT, S,exec,screenshotmenu
       bind = $mainMod SHIFT, Return, exec, wezterm
       bind = $mainMod, Q, killactive,
       bind = $mainMod SHIFT, Q, exit,
@@ -282,7 +282,7 @@ in
       exec = swww img ${wall}
       #exec = dunst &
       exec-once = xss-lock lock &
-      exec-once = ignis init #waybar #eww open bar && eww reload &
+      exec-once = hyprpanel #ignis init #waybar #eww open bar && eww reload &
       exec = xrdb -merge ~/.Xresources &
 
       exec = hyprctl setcursor Bibata-Modern-Classic 24

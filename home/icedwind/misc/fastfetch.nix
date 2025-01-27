@@ -46,7 +46,7 @@
                 "type": "uptime"
             },
             {
-                "key": "│ {#36}󰇄  de {#keys}│",
+                "key": "│ {#36}󰇄  de     {#keys}│",
                 "type": "de"
             },
             {

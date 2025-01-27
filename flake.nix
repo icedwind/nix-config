@@ -16,28 +16,36 @@
     };
 
     # zen
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-    darkmatter.url = "gitlab:VandalByte/darkmatter-grub-theme";
+    #darkmatter.url = "gitlab:VandalByte/darkmatter-grub-theme";
 
-    matugen = {
-      url = "github:/InioX/Matugen";
-    };
+    #matugen = {
+    #  url = "github:/InioX/Matugen";
+    #};
 
     ignis.url = "github:linkfrg/ignis";
 
     wezterm.url = "github:wez/wezterm?dir=nix";
+
+    hyprpanel.url = "github:jas-singhfsu/hyprpanel";
+
+    dbus_proxy.url = "github:Kasper24/lua-dbus_proxy/custom";
+    #hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
+
+    #stylix.url = "github:danth/stylix";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    #stylix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -61,7 +69,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         # > Our main home-manager configuration file <
-        modules = [./home/icedwind/home.nix];
+        modules = [./home/icedwind/home.nix]; #  stylix.nixosModules.stylix
       };
     };
   };

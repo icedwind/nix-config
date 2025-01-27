@@ -6,6 +6,19 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
+    shellAliases = {
+      la = "run exa -l";
+      ls = "ls --color=auto -a";
+      v = "nvim";
+      nf = "run neofetch";
+      sa = "pkill ags ; ags & disown";
+      suda = "sudo -E -s";
+      sh = "swayhide";
+      mnt = "sudo mount /dev/sdb5 ~/disks/hdd; sudo mount /dev/sda2 ~/disks/arch";
+
+      hm = "home-manager switch --flake ~/Documents/nix-config/#icedwind@frostbyte";
+      nx = "sudo nixos-rebuild switch --flake ~/Documents/nix-config/#frostbyte";
+    };
     /*plugins = [
       # Enable a plugin (here grc for colorized command output) from nixpkgs
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }

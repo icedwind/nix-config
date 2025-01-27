@@ -1,16 +1,16 @@
 { colors, pkgs, inputs, ... }:
 {
   services.picom = {
-    enable = false;
-    #package = nixpkgs-f2k.packages.${pkgs.system}.picom-pijulius;
-    package = inputs.nixpkgs-f2k.packages.${pkgs.system}.picom-ft-labs.overrideAttrs (oldAttrs: {
-      src = pkgs.fetchFromGitHub {
-        owner = "fdev31";
-        repo = "picom";
-        rev = "7834dd3147ba605bba5cbe911bacfa8b217c37e0";
-        sha256 = "05cd3yj3lv8nk433v0j2k86mhg72pf5lijkshqwarr8hp3h00cvx";
-      };
-    });
+    enable = true;
+    #package = inputs.nixpkgs-f2k.packages.${pkgs.system}.picom-pijulius;
+    #package = inputs.nixpkgs-f2k.packages.${pkgs.system}.picom-ft-labs.overrideAttrs (oldAttrs: {
+    #  src = pkgs.fetchFromGitHub {
+    #    owner = "fdev31";
+    #    repo = "picom";
+    #    rev = "7834dd3147ba605bba5cbe911bacfa8b217c37e0";
+    #    sha256 = "05cd3yj3lv8nk433v0j2k86mhg72pf5lijkshqwarr8hp3h00cvx";
+    #  };
+    #});
     activeOpacity = 1.0;
     backend = "glx";
     fade = true;
@@ -74,7 +74,8 @@
       glx-no-stencil = true;
       glx-no-rebind-pixmap = true;
       xrender-sync-fence = true;
-      use-damage = true;
+      use-damage = false;
+      vsync = true;
     };
 
   };

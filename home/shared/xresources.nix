@@ -33,6 +33,8 @@ with colors; {
       "dwm.selfgcolor" = "#${accent}";
       "dwm.selbordercolor" = "#${accent}";
       "dwm.urgcolor" = "#${color9}";
+      "Xcursor.theme" = "Bibata-Modern-Classic";
+      "Xcursor.size" = 24;
     };
   };
 }

@@ -2,7 +2,7 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, lib, config, pkgs, ...}:
 let
-  colors = import ../shared/cols/forest.nix { };
+  colors = import ../shared/cols/oxo.nix { };
   walltype = "image";
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
@@ -31,12 +31,16 @@ in
     (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland colors inputs; })
     (import ./conf/ui/waybar/default.nix { inherit config pkgs lib hyprland colors inputs; })
 
+    #(import ./conf/ui/hyprpanel/default.nix { inherit inputs colors; })
+
     # utils
     #(import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
-    #(import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
+    (import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
 
-    (import ./conf/utils/thunar/default.nix { inherit pkgs; })
+    #(import ./conf/utils/i3lock/default.nix { inherit colors pkgs; })
+
+    #(import ./conf/utils/thunar/default.nix { inherit pkgs; })
 
     # hypr stuff
     (import ./conf/hypr/hyprlock/default.nix { inherit config lib colors; })
@@ -49,8 +53,10 @@ in
     (import ./misc/ewwags.nix { inherit config colors; })
     (import ./misc/obsidian.nix { inherit colors; })
 
+    #(import ./misc/hyprpanel.nix { inherit config colors; })
+
     # Music thingies
-    (import ./conf/music/spicetify/default.nix { inherit colors inputs pkgs; })
+    #(import ./conf/music/spicetify/default.nix { inherit colors inputs pkgs; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/hypr.nix { inherit config pkgs; })
     (import ./conf/music/cava/default.nix { inherit colors; })
@@ -60,15 +66,18 @@ in
 
     (import ./misc/fastfetch.nix { inherit config; })
     (import ./misc/ignis.nix { inherit config colors; })
+    (import ./misc/hyprpanel_theme.nix { inherit config colors; })
 
     (import ./conf/editors/vscodium/default.nix { inherit pkgs colors; })
 
     (import ../shared/xresources.nix { inherit colors; })
+
+    (import ./conf/utils/picom/default.nix { inherit colors pkgs inputs; })
   ];
 
   nixpkgs = {
     # You can add overlays here
-    overlays = [
+    /*overlays = [
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -78,7 +87,7 @@ in
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-    ];
+    ];*/
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -98,6 +107,11 @@ in
     gtk3.extraConfig.gtk-decoration-layout = "menu:";
     iconTheme.name = "Papirus";
     theme.name = "phocus";
+
+    cursorTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+    };
   };
 
   home = {
@@ -130,6 +144,7 @@ in
       gopls
       playerctl
       (pkgs.callPackage ../../pkgs/icons/papirus.nix { })
+      (pkgs.callPackage ../../pkgs/icons/reversal.nix { })
       (pkgs.callPackage ../../pkgs/others/phocus.nix { inherit colors; })
 
       nemo
@@ -182,6 +197,31 @@ in
       glib
 
       gparted
+
+      spotify
+
+      jetbrains.pycharm-community-bin
+      jetbrains.idea-community-bin
+
+      prismlauncher
+
+      dotnet-sdk
+
+      telegram-desktop
+
+      pmbootstrap
+
+      inputs.hyprpanel.packages.${pkgs.system}.default
+
+      asciidoc
+
+      mons
+
+      libreoffice-qt6-fresh
+
+      github-desktop
+
+      simplescreenrecorder
     ];
   };
 
@@ -212,6 +252,12 @@ in
     userName  = "icedwind";
     userEmail = "romaniv2.maximus@gmail.com";
   };
+
+  #stylix = {
+  #  image = /home/icedwind/Documents/nix-config/home/images/wallpapers/pea3kpx.jpg;
+  #  enable = true;
+  #  polarity = "dark";
+  #};
 
 
   # Nicely reload system units when changing configs

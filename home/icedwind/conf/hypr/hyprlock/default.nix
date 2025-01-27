@@ -18,7 +18,7 @@ in {
       background = {
         monitor = "";
         path = imageStr;
-        blur_passes = 0;
+        blur_passes = 1;
         contrast = 0.8916;
         brightness = 0.7172;
         vibrancy = 0.1696;
@@ -40,7 +40,7 @@ in {
         # Time
         {
           monitor = "";
-          text = ''cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"'';
+          text = ''cmd[update:1000] echo "<span>$(date +"%H:%M")</span>"'';
           color = "#${foreground}";
           font_size = 160;
           font_family = "steelfish outline regular";
