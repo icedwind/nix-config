@@ -118,7 +118,7 @@ in
     activation = {
         installConfig = ''
           if [ ! -d "${config.home.homeDirectory}/.config/awesome" ]; then
-            ${pkgs.git}/bin/git clone --depth 1 --branch aura https://github.com/namishh/crystal ${config.home.homeDirectory}/.config/awesome
+            ${pkgs.git}/bin/git clone --depth 1 --branch awesome https://github.com/icedwind/nix-config ${config.home.homeDirectory}/.config/awesome
           fi
           if [ ! -d "${config.home.homeDirectory}/.config/eww" ]; then
             ${pkgs.git}/bin/git clone --depth 1 --branch glacier https://github.com/namishh/crystal ${config.home.homeDirectory}/.config/eww

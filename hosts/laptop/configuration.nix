@@ -113,7 +113,7 @@ in
     fastfetch
     fuse
     git
-    godot_4-mono
+    #godot_4-mono
     gtk3
     home-manager
     htop
